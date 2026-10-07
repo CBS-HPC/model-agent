@@ -1,6 +1,6 @@
 # LUMI AITTA managed inference
 
-AITTA is an additional inference platform alongside custom UCloud hosting.
+AITTA is an additional inference platform alongside custom UCloud vLLM self-hosting.
 It provides a curated model catalog and manages Slurm resources and model loading.
 The agent selects a model and verifies its API; AITTA handles machine selection.
 UCloud profiles, nginx templates, caches and lifecycle commands apply to UCloud.

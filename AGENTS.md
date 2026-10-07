@@ -10,6 +10,11 @@ capability/availability limits. Do not silently choose a fallback or assume task
 equivalence because both expose OpenAI-compatible chat. Ask only for missing
 provider/workload decisions. Keep existing deployment authorization in scope.
 
+Call the current self-hosting provider UCloud vLLM (`ucloud-vllm`). UCloud AI
+(`ucloud-ai`, https://ai.escience.sdu.dk/) is a separate planned fixed inference
+platform. Do not claim it is supported, use vLLM job controls for it, invent its
+API or add credentials before its integration is requested and reviewed.
+
 Consume pinned released provider packages. Generic LUMI API transport/preload
 belongs to lumi-aitta-api; UCloud sizing/jobs/lifecycle belongs to ucloud-vllm-agent.
 Do not edit provider repositories as part of routine requests or reimplement job

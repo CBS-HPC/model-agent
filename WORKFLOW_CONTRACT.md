@@ -1,5 +1,9 @@
 # Provider workflow
 
+Provider IDs distinguish `ucloud-vllm` (self-hosted) from `aitta` (managed LUMI).
+`ucloud-ai` is a separate planned fixed platform; its catalog entry does not
+authorize or implement requests. No command or fallback exists for it yet.
+
 1. Gather requested model/task, context/concurrency and desired provider/control.
 2. Inspect offline provider capabilities without allocating resources.
 3. For AITTA, query the live catalog and model capability/worker status. For UCloud,

@@ -3,11 +3,12 @@
 ```mermaid
 flowchart TD
     User[Operator and Codex/Claude] --> Wrapper[CBS Model Agent]
-    Wrapper --> UC[UCloud vLLM provider agent]
+    Wrapper --> UC[UCloud vLLM: self-hosted provider agent]
     UC --> API[Released ucloud-api]
     API --> Jobs[UCloud CPU preparation and GPU nginx jobs]
     Wrapper --> AITTA[Released lumi-aitta-api]
     AITTA --> Service[LUMI managed AITTA service]
+    Wrapper -. planned .-> UCAI[UCloud AI: fixed managed platform]
 ```
 
 The wrapper selects the provider and preserves its semantics. UCloud's provider
@@ -16,6 +17,13 @@ verification and lifecycle. It remains independently usable. LUMI's API package 
 a generic control client; the wrapper owns its conversational model-use workflow
 and chat verification. A separate LUMI agent repository is unnecessary for this
 initial managed-service integration.
+
+The self-hosting provider ID and CLI namespace are `ucloud-vllm`. The separate
+[UCloud AI platform](https://ai.escience.sdu.dk/) is a future managed provider
+with reserved ID `ucloud-ai`. Its listing is a roadmap item, not an implemented
+adapter or tested API. Review access, model catalog, authentication and task
+contracts before introducing that integration. Never route its requests to
+UCloud vLLM simply because both platforms have UCloud in their names.
 
 There is no provider-to-provider dependency. The wrapper's optional extras pin
 released packages. Install either provider alone or both. Do not infer UCloud

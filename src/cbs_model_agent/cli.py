@@ -9,21 +9,24 @@ from . import __version__
 
 
 PROVIDERS = {
-    "ucloud": {"mode": "self-hosted", "machine_selection": "provider agent",
+    "ucloud-vllm": {"name": "UCloud vLLM", "status": "implemented", "mode": "self-hosted", "machine_selection": "provider agent",
                "capabilities": ["HF inspection", "sizing", "deployment", "chat", "PII", "lifecycle"],
                "dependency": "ucloud-vllm-agent@v0.1.2", "workspace_required": True},
-    "aitta": {"mode": "managed LUMI inference", "machine_selection": "AITTA service",
+    "aitta": {"name": "LUMI AITTA", "status": "implemented", "mode": "managed LUMI inference", "machine_selection": "AITTA service",
               "capabilities": ["model discovery", "worker status", "preload", "chat verification"],
               "dependency": "lumi-aitta-api@v0.1.0", "live_validation": "pending"},
+    "ucloud-ai": {"name": "UCloud AI", "status": "planned", "mode": "fixed managed inference platform",
+                  "homepage": "https://ai.escience.sdu.dk/", "capabilities": [],
+                  "note": "Future integration; API, access and task contracts have not been reviewed."},
 }
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="CBS Model Agent: UCloud and LUMI AITTA inference")
+    parser = argparse.ArgumentParser(description="CBS Model Agent: UCloud vLLM and LUMI AITTA inference")
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="provider", required=True)
     commands.add_parser("providers", help="Offline provider capabilities; no network requests")
-    command = commands.add_parser("ucloud", help="Delegate to the UCloud agent in its workspace")
+    command = commands.add_parser("ucloud-vllm", help="Delegate to the UCloud agent in its workspace")
     command.add_argument("--workspace", type=Path, required=True)
     command.add_argument("arguments", nargs=argparse.REMAINDER)
     command = commands.add_parser("aitta", help="LUMI managed inference")
@@ -43,8 +46,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.provider == "providers":
             print(json.dumps(PROVIDERS, indent=2))
             return 0
-        if args.provider == "ucloud":
-            from .ucloud import run
+        if args.provider == "ucloud-vllm":
+            from .ucloud_vllm import run
             arguments = args.arguments[1:] if args.arguments[:1] == ["--"] else args.arguments
             # Load no wrapper environment before delegating. Provider owns .env/state.
             return run(args.workspace, arguments)

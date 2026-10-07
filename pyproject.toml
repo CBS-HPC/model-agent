@@ -12,7 +12,7 @@ dependencies = []
 
 [project.optional-dependencies]
 aitta = ["lumi-aitta-api @ git+https://github.com/CBS-HPC/lumi-aitta-api.git@v0.1.0"]
-ucloud = ["ucloud-vllm-agent[ucloud] @ git+https://github.com/CBS-HPC/ucloud-vllm-agent.git@v0.1.2"]
+ucloud-vllm = ["ucloud-vllm-agent[ucloud] @ git+https://github.com/CBS-HPC/ucloud-vllm-agent.git@v0.1.2"]
 providers = [
   "lumi-aitta-api @ git+https://github.com/CBS-HPC/lumi-aitta-api.git@v0.1.0",
   "ucloud-vllm-agent[ucloud] @ git+https://github.com/CBS-HPC/ucloud-vllm-agent.git@v0.1.2",

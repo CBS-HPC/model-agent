@@ -1,5 +1,8 @@
 # Remaining work
 
+- [ ] Add the distinct UCloud AI fixed inference platform (`ucloud-ai`) later;
+  review its access/API/catalog and task contracts before implementing an adapter.
+
 - [x] Independent UCloud and LUMI providers behind CBS Model Agent.
 - [x] Explicit UCloud workspace delegation without duplicated settings/journals.
 - [x] Migrate AITTA discovery/preload/chat verification out of the UCloud agent.

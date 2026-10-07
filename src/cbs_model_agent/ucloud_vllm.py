@@ -17,7 +17,7 @@ def run(workspace: Path, arguments: list[str]) -> int:
     try:
         from ucloud_vllm_agent.cli import main
     except ImportError:
-        raise ValueError("Install CBS Model Agent's [ucloud] extra before using this provider") from None
+        raise ValueError("Install CBS Model Agent's [ucloud-vllm] extra before using this provider") from None
     previous = Path.cwd()
     try:
         os.chdir(workspace)

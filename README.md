@@ -8,6 +8,11 @@ provider packages perform the requested operations.
 | --- | --- | --- |
 | [UCloud vLLM agent](https://github.com/CBS-HPC/ucloud-vllm-agent) | Model inspection, sizing, pinned profiles, jobs, nginx, chat/PII verification and lifecycle | You need a custom HF model/revision, task adapter or control over machine/configuration |
 | [LUMI AITTA API](https://github.com/CBS-HPC/lumi-aitta-api) | Token authentication, service/model/worker discovery and explicit preload | Your desired model is offered by the managed AITTA service |
+| [UCloud AI](https://ai.escience.sdu.dk/) — planned | Fixed managed inference platform; future adapter | Future option for its platform-provided models |
+
+`ucloud-vllm` means self-hosting with vLLM on a machine you select. `ucloud-ai`
+is reserved for the separate UCloud AI platform and is listed as planned only;
+it has no executable commands, credentials or assumed API compatibility yet.
 
 CBS Model Agent owns provider selection, the combined request workflow and AITTA
 chat/SSE/auth verification. UCloud remains a self-contained inference provider;
@@ -21,19 +26,19 @@ python -m pip install -e ".[providers]"
 cbs-model providers
 ```
 
-Private Git dependencies require GitHub access. Install `.[ucloud]` or `.[aitta]`
+Private Git dependencies require GitHub access. Install `.[ucloud-vllm]` or `.[aitta]`
 instead if you only use one provider. The pins are UCloud agent v0.1.2 and LUMI
 API v0.1.0. `providers` is offline and works without optional dependencies.
 
-## UCloud
+## UCloud vLLM
 
 Use the existing provider workspace so its `.env`, profiles, notebooks, deployment
 journals and cache settings remain in their established locations:
 
 ```powershell
-cbs-model ucloud --workspace "C:\path\to\UCloud vllm agent" models
-cbs-model ucloud --workspace "C:\path\to\UCloud vllm agent" size --profile config/hosting.qwen-small.json
-cbs-model ucloud --workspace "C:\path\to\UCloud vllm agent" status --deployment deployments/name/run-id
+cbs-model ucloud-vllm --workspace "C:\path\to\UCloud vllm agent" models
+cbs-model ucloud-vllm --workspace "C:\path\to\UCloud vllm agent" size --profile config/hosting.qwen-small.json
+cbs-model ucloud-vllm --workspace "C:\path\to\UCloud vllm agent" status --deployment deployments/name/run-id
 ```
 
 Arguments are delegated directly to the provider CLI in that workspace. Deployment

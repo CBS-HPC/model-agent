@@ -5,7 +5,7 @@ from types import SimpleNamespace
 import pytest
 
 from cbs_model_agent.cli import main
-from cbs_model_agent.ucloud import run
+from cbs_model_agent.ucloud_vllm import run
 
 
 @pytest.fixture
@@ -23,7 +23,7 @@ def test_delegation_preserves_workspace_arguments_and_exit_code(workspace, monke
         calls.append((Path.cwd(), arguments))
         return 7
     monkeypatch.setitem(sys.modules, "ucloud_vllm_agent.cli", SimpleNamespace(main=provider_main))
-    assert main(["ucloud", "--workspace", str(workspace), "status", "--deployment", "deployments/exact/run"]) == 7
+    assert main(["ucloud-vllm", "--workspace", str(workspace), "status", "--deployment", "deployments/exact/run"]) == 7
     assert calls == [(workspace, ["status", "--deployment", "deployments/exact/run"])]
     assert Path.cwd() == before
 
@@ -33,7 +33,7 @@ def test_failure_restores_cwd_and_never_falls_back(workspace, monkeypatch):
     def provider_main(arguments):
         raise RuntimeError("synthetic failure")
     monkeypatch.setitem(sys.modules, "ucloud_vllm_agent.cli", SimpleNamespace(main=provider_main))
-    assert main(["ucloud", "--workspace", str(workspace), "deploy"]) == 1
+    assert main(["ucloud-vllm", "--workspace", str(workspace), "deploy"]) == 1
     assert Path.cwd() == before
 
 
@@ -47,3 +47,8 @@ def test_offline_providers_need_no_credentials(capsys):
     output = capsys.readouterr().out
     assert "ucloud-vllm-agent@v0.1.2" in output
     assert "lumi-aitta-api@v0.1.0" in output
+    import json
+    providers = json.loads(output)
+    assert providers["ucloud-vllm"]["mode"] == "self-hosted"
+    assert providers["ucloud-ai"]["status"] == "planned"
+    assert providers["ucloud-ai"]["capabilities"] == []
