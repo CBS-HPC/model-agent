@@ -41,3 +41,8 @@ transport. No jobs should start for docs, tests or architecture changes.
 
 Keep provider metadata and documentation synchronized. Do not commit detailed
 runtime journals, environment files, generated notebook outputs or credentials.
+
+For researcher installation and other AI harnesses, use docs/researcher-onboarding.md
+and the provider's CLI contract. UCloud delegation is a child process per call;
+do not replace it with cwd/environment mutation. Inherited credentials can still
+override workspace .env, so diagnose their presence without printing values.

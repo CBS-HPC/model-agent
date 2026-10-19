@@ -21,30 +21,38 @@ fallback, bulk loading, job allocation or renewal runs automatically.
 
 ## Install
 
+Start with [researcher onboarding and harness integration](docs/researcher-onboarding.md)
+for installation, provider workspace requirements and the command/result contract.
+
 ```powershell
 python -m pip install -e ".[providers]"
 cbs-model providers
 ```
 
 Private Git dependencies require GitHub access. Install `.[ucloud-vllm]` or `.[aitta]`
-instead if you only use one provider. The pins are UCloud agent v0.1.2 and LUMI
+instead if you only use one provider. The pins are UCloud agent v0.1.3 and LUMI
 API v0.1.0. `providers` is offline and works without optional dependencies.
 
 ## UCloud vLLM
 
-Use the existing provider workspace so its `.env`, profiles, notebooks, deployment
+From the `model-agent` folder, use the sibling provider workspace so its `.env`, profiles, notebooks, deployment
 journals and cache settings remain in their established locations:
 
 ```powershell
-cbs-model ucloud-vllm --workspace "C:\path\to\UCloud vllm agent" models
-cbs-model ucloud-vllm --workspace "C:\path\to\UCloud vllm agent" size --profile config/hosting.qwen-small.json
-cbs-model ucloud-vllm --workspace "C:\path\to\UCloud vllm agent" status --deployment deployments/name/run-id
+cbs-model ucloud-vllm --workspace "..\ucloud-vllm-agent" models
+cbs-model ucloud-vllm --workspace "..\ucloud-vllm-agent" size --profile config/hosting.qwen-small.json
+cbs-model ucloud-vllm --workspace "..\ucloud-vllm-agent" status --deployment deployments/name/run-id
 ```
 
 Arguments are delegated directly to the provider CLI in that workspace. Deployment
 and destructive commands keep the provider's review/ownership requirements. The
 wrapper never creates a second journal or translates templates/jobs itself.
 Read the UCloud repository's AGENTS.md and WORKFLOW_CONTRACT.md before operations.
+
+Delegation uses a separate child process per invocation. Provider-loaded settings
+cannot leak into subsequent workspace calls; explicit inherited environment
+variables still override that workspace's .env. Success output is JSON, deployment
+progress is on stderr, and errors include a structured JSON record.
 
 ## LUMI AITTA
 

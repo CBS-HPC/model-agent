@@ -11,7 +11,7 @@ from . import __version__
 PROVIDERS = {
     "ucloud-vllm": {"name": "UCloud vLLM", "status": "implemented", "mode": "self-hosted", "machine_selection": "provider agent",
                "capabilities": ["HF inspection", "sizing", "deployment", "chat", "PII", "lifecycle"],
-               "dependency": "ucloud-vllm-agent@v0.1.2", "workspace_required": True},
+               "dependency": "ucloud-vllm-agent@v0.1.3", "workspace_required": True},
     "aitta": {"name": "LUMI AITTA", "status": "implemented", "mode": "managed LUMI inference", "machine_selection": "AITTA service",
               "capabilities": ["model discovery", "worker status", "preload", "chat verification"],
               "dependency": "lumi-aitta-api@v0.1.0", "live_validation": "pending"},
@@ -21,8 +21,15 @@ PROVIDERS = {
 }
 
 
+class JSONArgumentParser(argparse.ArgumentParser):
+    def error(self, message):
+        print(json.dumps({"schema": "cbs.model.error.v1", "error": {
+            "code": "invalid_arguments", "message": "Invalid command arguments; use --help."}}), file=sys.stderr)
+        raise SystemExit(2)
+
+
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="CBS Model Agent: UCloud vLLM and LUMI AITTA inference")
+    parser = JSONArgumentParser(description="CBS Model Agent: UCloud vLLM and LUMI AITTA inference")
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="provider", required=True)
     commands.add_parser("providers", help="Offline provider capabilities; no network requests")
@@ -73,5 +80,6 @@ def main(argv: list[str] | None = None) -> int:
         # Only the independently maintained API client defines sanitized errors.
         safe_api_error = type(exc).__module__ == "lumi_aitta_api.client" and type(exc).__name__ == "AittaError"
         reason = str(exc) if isinstance(exc, ValueError) or safe_api_error else type(exc).__name__
-        print("Operation failed: " + reason, file=sys.stderr)
+        print(json.dumps({"schema": "cbs.model.error.v1", "error": {
+            "code": "operation_failed", "message": reason}}), file=sys.stderr)
         return 1

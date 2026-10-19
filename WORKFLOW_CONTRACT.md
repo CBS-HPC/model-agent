@@ -19,7 +19,10 @@ workers and Slurm. No transparent fallback, duplicate allocation or model substi
 
 UCloud delegation requires a project workspace named ucloud-vllm-agent in its
 pyproject.toml. Arguments retain their meaning; paths resolve there. No wrapper
-credentials or settings are loaded first. Process cwd is restored even on failure.
+credentials or settings are loaded first. Each invocation uses a child process
+with that cwd; the wrapper's cwd/environment are not modified. Explicit inherited
+environment remains higher precedence than the child's .env. Use the subprocess
+CLI contract in docs/researcher-onboarding.md for harness integration.
 
 AITTA uses its independent released client for control operations and the wrapper
 for chat checks. Preload requested means loading accepted, not ready. Chat check
