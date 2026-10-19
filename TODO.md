@@ -1,5 +1,7 @@
 # Remaining work
 
+Publication note: historical operational identifiers use role labels and example URLs; measurements and runtime behavior are retained. Exact identities belong in private journals.
+
 ## Researcher onboarding priority
 
 - [x] Follow the local/harness stage of the [UCloud vLLM onboarding roadmap](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/TODO.md#researcher-onboarding-roadmap):
@@ -16,12 +18,15 @@
 - [ ] Validate clean installation and a first deployment using another
   researcher's project. Local/mock validation and release publication are separate
   from this outstanding live acceptance test.
+- [x] Publish wrapper v0.1.1 with wheel/source/checksums and passing Windows/Linux
+  CI on Python 3.11/3.13. Fresh local installation of actual released dependencies
+  passed offline discovery, doctor, template export and synthetic preparation.
 - [ ] Keep the future UCloud AI onboarding separate: review its own access,
   authentication and model/task contract rather than requiring self-hosting setup.
 
 Continuation checkpoint 2026-10-19: local harness changes and provider pin are
-implemented for wrapper v0.1.1; verify release/CI status before repeating any work.
-Provider v0.1.3 is published. No cloud jobs/resources were created. Link/key
+published in wrapper v0.1.1 (v0.1.1), consuming provider v0.1.3 (v0.1.3).
+Both CI matrices passed; 17 wrapper tests pass locally. No cloud jobs/resources were created. Link/key
 provisioning, no-prior-job bootstrap and colleague-led live onboarding remain
 pending; consult the provider's roadmap and latest released API before proceeding.
 
