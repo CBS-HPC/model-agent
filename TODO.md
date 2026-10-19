@@ -1,5 +1,25 @@
 # Remaining work
 
+## Researcher onboarding priority
+
+- [ ] Follow the [UCloud vLLM onboarding roadmap](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/TODO.md#researcher-onboarding-roadmap):
+  clear installation/access/workspace requirements, readiness checks and a
+  subprocess CLI integration contract for researchers' own AI harnesses.
+- [ ] Add a wrapper onboarding guide and copyable harness instructions explaining
+  provider selection, cwd/settings, JSON/exit codes and resource-allocation intent.
+- [ ] Fix/test settings isolation before advertising repeated in-process Python
+  embedding across provider workspaces; use a subprocess per invocation initially.
+- [ ] After a provider release, update its dependency pin and document optional
+  resource setup through released ucloud-api Link management. SSH public-key
+  management is conditional on upstream delivery. Keep implementation in the
+  provider/API; the wrapper must not duplicate resource control or journals.
+- [ ] Validate clean installation and a first deployment using another
+  researcher's project, then publish the updated wrapper release.
+- [ ] Keep the future UCloud AI onboarding separate: review its own access,
+  authentication and model/task contract rather than requiring self-hosting setup.
+
+## Provider development
+
 - [ ] Add the distinct UCloud AI fixed inference platform (`ucloud-ai`) later;
   review its access/API/catalog and task contracts before implementing an adapter.
 
