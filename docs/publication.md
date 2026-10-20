@@ -2,9 +2,37 @@
 
 The operator selected MIT for code and CC BY 4.0 for documentation, and chose to
 sanitize historical operational details before public publication. This checklist
-covers `model-agent`, `ucloud-vllm-agent` and `lumi-aitta-api`. They remain private
-while the history and release cleanup is resolved. The already public generic
+covers `model-agent`, `ucloud-vllm-agent` and `lumi-aitta-api`. The operator approved historical cleanup and public publication on 2026-10-20. The already public generic
 `ucloud-api` project is separate; its release does not change provider pins here.
+
+## Publication record — 2026-10-20
+
+- The original provider and wrapper repositories are retained as private archives.
+  Clean GitHub repositories reuse their public names, so cached pre-cleanup commits
+  and earlier Actions logs remain in the private originals. Local backups also
+  preserve the original refs and release files. No repository data was deleted.
+- Provider and wrapper branch/tag histories were rewritten to replace operational
+  identities with role labels and reserved example hostnames. Runtime files were
+  checked against private backups. AITTA history needed no rewrite.
+- Six attached source archives were sanitized: UCloud vLLM v0.1.2–v0.1.5 and
+  CBS Model Agent v0.1.2–v0.1.3. The latter includes an additional archive whose
+  documentation referenced rewritten commits. Their checksum files were updated;
+  existing wheels were retained. Release notes identify the replacement date.
+- The coordinated licensed public releases are wrapper v0.1.4, provider v0.1.6
+  and AITTA API v0.1.1. The provider retains reviewed UCloud API v0.1.7; this
+  publication change does not upgrade its runtime dependencies or host a model.
+- License texts, build contents, retained refs/files, CI and a fresh installation
+  are checked before public visibility. Project permissions and platform tokens
+  are still required to operate UCloud or AITTA.
+
+### Existing private checkouts
+
+Commit identities and historical tag targets changed during the approved cleanup.
+Create a fresh clone for future development; do not merge or force-push an old
+checkout back into the cleaned repository. Preserve local .env files, SSH keys,
+profiles and ignored ownership/deployment journals. Migrate your own local files
+deliberately without uploading them or copying credentials between projects.
+Existing runtime allocations and journals were not changed by publication.
 
 ## Tracked documentation
 
@@ -30,8 +58,8 @@ deployment/ownership journals are not changed by this documentation cleanup.
 
 A new documentation commit does not remove earlier content from Git history,
 tags, GitHub source downloads or attached source archives. A new version alone
-also leaves old release files accessible. Keep visibility private until the
-operator has approved how those historical copies should be handled.
+also leaves old release files accessible. The publication record above describes
+the approved cleanup; apply the checklist below to future publication changes.
 
 Before a visibility change:
 

@@ -35,8 +35,8 @@ explicit. AITTA reads the wrapper environment or an explicit existing `--env-fil
 Credentials and deployment journals are not copied during migration. Provider
 submissions and task evidence remain owned by their actual execution path.
 
-AITTA remains outside ucloud-vllm-agent. The LUMI AITTA API is pinned at v0.1.0;
-the released wrapper v0.1.3 consumes UCloud provider v0.1.5. The wrapper uses explicit
+AITTA remains outside ucloud-vllm-agent. The LUMI AITTA API is pinned at v0.1.1;
+the released wrapper v0.1.4 consumes UCloud provider v0.1.6. The wrapper uses explicit
 provider namespaces; unified planning, cross-provider benchmarks and task catalogs
 can be added when their contracts and evidence are established.
 

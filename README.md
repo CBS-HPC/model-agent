@@ -25,7 +25,7 @@ Start with [researcher onboarding and harness integration](docs/researcher-onboa
 for installation, provider workspace requirements and the command/result contract.
 For a colleague's first deployment, use the [onboarding pilot plan](docs/onboarding-plan.md)
 and its phase-by-phase acceptance checklist. The documented release pair is wrapper
-v0.1.3 with provider v0.1.5; ucloud-api is pinned at v0.1.7 by the provider.
+v0.1.4 with provider v0.1.6; ucloud-api is pinned at v0.1.7 by the provider.
 
 ```powershell
 python -m pip install ".[ucloud-vllm]"
@@ -33,11 +33,12 @@ cbs-model providers
 ```
 
 Run this from a checkout of the documented wrapper release in an activated venv.
-Private Git dependencies require command-line GitHub access, including ucloud-api
-for UCloud hosting. Install `.[aitta]` for AITTA or `.[providers]` for both;
-the latter also requires access to the private lumi-aitta-api repository.
-The pins are UCloud agent v0.1.5 and LUMI
-API v0.1.0. `providers` is offline and works without optional dependencies.
+All provider dependencies are public Git repositories; installation needs Git
+and network access, without a GitHub token. Install `.[aitta]` for AITTA or
+`.[providers]` for both. Using either platform still requires its own project
+access and API credentials.
+The pins are UCloud agent v0.1.6 and LUMI
+API v0.1.1. `providers` is offline and works without optional dependencies.
 
 ## UCloud vLLM
 
@@ -60,7 +61,7 @@ cannot leak into subsequent workspace calls; explicit inherited environment
 variables still override that workspace's .env. Success output is JSON, deployment
 progress is on stderr, and errors include a structured JSON record.
 
-Provider v0.1.5 consumes released ucloud-api v0.1.7. Optional first-time
+Provider v0.1.6 consumes released ucloud-api v0.1.7. Optional first-time
 [Link/public-key setup](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/docs/resource-setup.md)
 has separate preview/apply/reconcile/cleanup commands and creates no jobs. It
 preserves created/reused ownership and blocks uncertain outcomes. `catalog --live`
@@ -108,7 +109,7 @@ python -m build
 See [architecture](docs/architecture.md), [execution contract](WORKFLOW_CONTRACT.md)
 and [remaining work](TODO.md). No live jobs are started by the test suite.
 The [publication checklist](docs/publication.md) tracks documentation sanitization
-and the separate history/release gate before changing repository visibility.
+and the history/release cleanup record, including migration for older checkouts.
 
 ## License
 

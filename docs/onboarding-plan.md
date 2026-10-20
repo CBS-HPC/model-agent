@@ -4,7 +4,7 @@ Use this plan to onboard a colleague to **CBS Model Agent with UCloud vLLM**.
 Technical installation/commands live in the provider's maintained
 [onboarding guide](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/docs/researcher-onboarding.md).
 This plan defines the sequence, responsibilities and evidence needed to accept it.
-Reviewed 2026-10-20 against wrapper v0.1.3, provider v0.1.5 and ucloud-api v0.1.7.
+Reviewed 2026-10-20 against wrapper v0.1.4, provider v0.1.6 and ucloud-api v0.1.7.
 
 ## Choose the user's route
 
@@ -20,8 +20,8 @@ Reviewed 2026-10-20 against wrapper v0.1.3, provider v0.1.5 and ucloud-api v0.1.
 
 | Phase | Researcher and support actions | Completion evidence |
 | --- | --- | --- |
-| 1. Confirm access and workload | Project administrator confirms CPU/GPU allocation, permissions and a writable drive. Researcher obtains private Git read access, a UCloud token/its metadata ID and local SSH identity. Agree the small test model, context/concurrency, maximum duration and operator. | Exact project UUID, selected source mode, intended workload and allocation limits; credentials remain in local files. |
-| 2. Install in isolation | Researcher creates a new parent directory, clones the paired release tags and creates an external venv. Install only the UCloud extra initially; leave other projects untouched. | Version commands report wrapper 0.1.3/provider 0.1.5; offline provider listing works. |
+| 1. Confirm access and workload | Project administrator confirms CPU/GPU allocation, permissions and a writable drive. Researcher confirms Git/network access to the public repositories and obtains a UCloud token/its metadata ID and local SSH identity. Agree the small test model, context/concurrency, maximum duration and operator. | Exact project UUID, selected source mode, intended workload and allocation limits; credentials remain in local files. |
+| 2. Install in isolation | Researcher creates a new parent directory, clones the paired release tags and creates an external venv. Install only the UCloud extra initially; leave other projects untouched. | Version commands report wrapper 0.1.4/provider 0.1.6; offline provider listing works. |
 | 3. Configure and prepare resources | Fill the provider root .env locally. Select the drive, CPU product and own URL. If needed, review setup-plan and explicitly apply the Link/optional public-key changes. Record created/reused ownership. | Correct UUID/token ID/URL, local key selection and resource setup receipts. No job is required to reserve a Link. |
 | 4. Bootstrap the workspace | Review bootstrap-plan for a fresh namespace. When that CPU allocation/folder work is requested, apply, explicitly provision credentials, then finish. Existing-template users verify both jobs and skip bootstrap. | Finalized bootstrap.json and released bootstrap CPU, or verified compatible template IDs. Preserve all journals. |
 | 5. Deploy the first model | Copy the Qwen profile locally; review license/revision, machine, 4096 total context, concurrency 1 and one hour. Run size, prepare-profile, source-specific doctor/online preview. On the requested deployment, save the returned path and inspect verification. | Public expected-model/chat/SSE/auth checks pass; exact deployment/job IDs and expiry are recorded. Optional notebook uses the matching local profile/URL. |

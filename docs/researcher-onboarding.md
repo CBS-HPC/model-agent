@@ -2,7 +2,7 @@
 
 Start with the [onboarding pilot plan](onboarding-plan.md) for the phase sequence,
 operator responsibilities and acceptance checklist. For a new UCloud installation,
-clone wrapper v0.1.3 and provider v0.1.5 and follow the provider guide's Windows/Linux
+clone wrapper v0.1.4 and provider v0.1.6 and follow the provider guide's Windows/Linux
 venv/install instructions. The wrapper's UCloud extra installs released provider
 code; pip installation does not automatically configure a coding harness.
 
@@ -47,7 +47,7 @@ task/data-use approval are separate decisions.
 
 ## Optional first-time UCloud resources
 
-The pinned provider v0.1.5 uses released ucloud-api v0.1.7. Follow its
+The pinned provider v0.1.6 uses released ucloud-api v0.1.7. Follow its
 [Link/public-key setup guide](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/docs/resource-setup.md)
 to prepare a researcher-owned request, then delegate its preview commands:
 

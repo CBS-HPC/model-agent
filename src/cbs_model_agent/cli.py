@@ -11,10 +11,10 @@ from . import __version__
 PROVIDERS = {
     "ucloud-vllm": {"name": "UCloud vLLM", "status": "implemented", "mode": "self-hosted", "machine_selection": "provider agent",
                "capabilities": ["HF inspection", "sizing", "deployment", "chat", "PII", "lifecycle", "Link/key setup", "application bootstrap", "live availability"],
-               "dependency": "ucloud-vllm-agent@v0.1.5", "workspace_required": True},
+               "dependency": "ucloud-vllm-agent@v0.1.6", "workspace_required": True},
     "aitta": {"name": "LUMI AITTA", "status": "implemented", "mode": "managed LUMI inference", "machine_selection": "AITTA service",
               "capabilities": ["model discovery", "worker status", "preload", "chat verification"],
-              "dependency": "lumi-aitta-api@v0.1.0", "live_validation": "pending"},
+              "dependency": "lumi-aitta-api@v0.1.1", "live_validation": "pending"},
     "ucloud-ai": {"name": "UCloud AI", "status": "planned", "mode": "fixed managed inference platform",
                   "homepage": "https://ai.escience.sdu.dk/", "capabilities": [],
                   "note": "Future integration; API, access and task contracts have not been reviewed."},
