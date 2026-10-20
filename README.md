@@ -107,6 +107,8 @@ python -m build
 
 See [architecture](docs/architecture.md), [execution contract](WORKFLOW_CONTRACT.md)
 and [remaining work](TODO.md). No live jobs are started by the test suite.
+The [publication checklist](docs/publication.md) tracks documentation sanitization
+and the separate history/release gate before changing repository visibility.
 
 ## License
 

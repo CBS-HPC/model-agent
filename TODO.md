@@ -2,14 +2,24 @@
 
 Publication note: historical operational identifiers use role labels and example URLs; measurements and runtime behavior are retained. Exact identities belong in private journals.
 
+## Publication cleanup (2026-10-20)
+
+The operator chose sanitization. Tracked documentation now uses role labels and
+example deployment URLs; historical project/job/resource/drive/run/cache
+identifiers are omitted. Measurements, model revisions and hardware settings are
+retained. Follow docs/publication.md before changing repository visibility.
+Earlier commits/tags and attached source archives still require a separate,
+reviewed cleanup decision; new documentation commits do not erase those copies.
+Keep all three repositories private while that publication gate remains open.
+
 ## Licensing (2026-10-20)
 
 The operator selected MIT for code and CC BY 4.0 for documentation. LICENSE.md
 defines the split, including configuration/code examples and notebook cells;
 LICENSES/ carries the full texts. Package metadata declares the combined SPDX
 expression and includes both texts in new builds. Existing tags/release assets
-and provider dependency pins are unchanged. Repository visibility and publication
-of historical operational details remain separate decisions. Isolated wheel and
+and provider dependency pins are unchanged. Repository visibility and historical
+copy cleanup are tracked above. Isolated wheel and
 source builds were verified to include the scope notice, both full license texts
 and the SPDX metadata.
 
@@ -37,7 +47,7 @@ releases passed version/origin checks, wrapper delegation, local bootstrap docto
 read-only preview, existing live-job/process status and pip check. It allocated
 no jobs. Do not repeat publication or completed checks; inspect release state.
 
-The trial used operator-selected "isolated validation project", fresh namespaced storage
+The trial used an operator-selected isolated validation project, fresh namespaced storage
 and Link, and new local sandbox credentials. Both CPU jobs were released. Serving
 job bootstrap-qwen-gpu has recorded expiry 2026-10-20 14:04:09 Copenhagen; query status before
 claiming uptime. Never renew/replace/release implicitly. Original checkouts and

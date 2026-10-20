@@ -54,6 +54,11 @@ transport. No jobs should start for docs, tests or architecture changes.
 
 Keep provider metadata and documentation synchronized. Do not commit detailed
 runtime journals, environment files, generated notebook outputs or credentials.
+Use role labels and reserved example domains in documentation instead of operator
+project names, job/resource IDs, deployment URLs and exact run/cache identifiers.
+Keep original identities in private operational journals. Model revisions,
+hardware settings and numeric measurements remain suitable validation evidence.
+Read docs/publication.md before changing repository visibility or release history.
 
 For colleague-led pilot phases and acceptance, use docs/onboarding-plan.md.
 For researcher installation and other AI harnesses, use docs/researcher-onboarding.md
