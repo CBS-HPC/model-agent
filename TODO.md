@@ -2,6 +2,18 @@
 
 Publication note: historical operational identifiers use role labels and example URLs; measurements and runtime behavior are retained. Exact identities belong in private journals.
 
+## Documentation review (2026-10-20)
+
+Reviewed wrapper/provider documentation against the published wrapper v0.1.3,
+provider v0.1.5 and ucloud-api v0.1.7 pair/chain. Added docs/onboarding-plan.md for
+the colleague-led pilot, linked the canonical provider install guide and fixed
+bootstrap examples to include explicit apply/credentials/finish before doctor.
+Clarified optional dependencies, AITTA working directory and future provider limits.
+Documentation changes do not establish new live validation or colleague acceptance.
+Cross-repository offline QA passed all 102 relative links and 108 CLI examples;
+notebook code/output checks and the bundled hosting-skill validator also passed.
+The changes clarify the published pair; they do not change its release tags/pins.
+
 ## Isolated bootstrap follow-up (2026-10-20)
 
 Provider v0.1.5 is published at v0.1.5 after Windows/Linux CI, source/wheel asset
@@ -31,22 +43,22 @@ PII remain distinct from this operator-led trial.
   provider selection, cwd/settings, JSON/exit codes and resource-allocation intent.
 - [x] Isolate UCloud delegation in a child process per invocation and regression
   test two workspaces. Repeated direct provider-main embedding remains unsupported.
-- [x] Pin the released UCloud vLLM provider v0.1.3 for the onboarding changes.
+- [x] Pin the released UCloud vLLM provider v0.1.5 for bootstrap onboarding.
 - [x] Document optional Link/account-public-key setup through released ucloud-api
   v0.1.7 and published provider v0.1.4. Keep resource control and ownership/recovery
   journals in the provider/API; the wrapper delegates without duplicating them.
 - [x] Update optional dependencies and offline capabilities to published provider
-  v0.1.4, including separate setup and opt-in live availability snapshots.
+  v0.1.5, including separate setup, bootstrap and opt-in live availability snapshots.
 - [ ] Validate clean installation and a first deployment using another
   researcher's project. Local/mock validation and release publication are separate
   from this outstanding live acceptance test.
-- [x] Publish wrapper v0.1.1 with wheel/source/checksums and passing Windows/Linux
+- [x] Publish wrapper v0.1.3 with wheel/source/checksums and passing Windows/Linux
   CI on Python 3.11/3.13. Fresh local installation of actual released dependencies
   passed offline discovery, doctor, template export and synthetic preparation.
 - [ ] Keep the future UCloud AI onboarding separate: review its own access,
   authentication and model/task contract rather than requiring self-hosting setup.
 
-Continuation checkpoint 2026-10-20: provider v0.1.4 is published at v0.1.4 with
+Historical checkpoint before v0.1.3 (superseded above): provider v0.1.4 is published at v0.1.4 with
 128 passing local tests (one platform skip), passing Windows/Linux CI and reviewed
 ucloud-api v0.1.7. Wrapper v0.1.2 consumes that published provider and documents
 separate Link/key setup. Wrapper v0.1.2 (v0.1.2) is published with wheel/source/
@@ -56,7 +68,7 @@ read-only setup. Do not repeat completed checks/publication; inspect GitHub firs
 No cloud jobs/resources were created. Shared storage/bootstrap,
 new setup-adapter live validation and colleague-led onboarding remain pending.
 
-Previous checkpoint 2026-10-19: local harness changes and provider pin are
+Historical checkpoint 2026-10-19 (superseded above): local harness changes and provider pin are
 published in wrapper v0.1.1 (v0.1.1), consuming provider v0.1.3 (v0.1.3).
 Both CI matrices passed; 17 wrapper tests pass locally. No cloud jobs/resources were created. Link/key
 provisioning, no-prior-job bootstrap and colleague-led live onboarding remain

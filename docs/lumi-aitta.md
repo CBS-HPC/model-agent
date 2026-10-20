@@ -6,7 +6,8 @@ The agent selects a model and verifies its API; AITTA handles machine selection.
 UCloud profiles, nginx templates, caches and lifecycle commands apply to UCloud.
 
 Source: [official AITTA guide](https://docs.lumi-supercomputer.eu/laif/inference/aitta/),
-reviewed 2026-10-07. Access, catalog and limits may change.
+reviewed again 2026-10-20. Access, catalog and limits may change. This documentation
+review made no authenticated requests or model-loading requests.
 
 ## Dependency and access
 
@@ -17,7 +18,7 @@ model selection and task-specific connectivity verification. Do not copy the
 dependency's control API or edit that repository as part of routine hosting work.
 
 ```powershell
-python -m pip install -e ".[aitta]"
+python -m pip install ".[aitta]"
 ```
 
 Installing a private Git dependency requires GitHub access. An active LUMI account
@@ -27,6 +28,13 @@ Haka, MyAccessId/Puhuri or CSC login. Add `AITTA_API_KEY=<token>` to your existi
 local project `.env`. Keep `VLLM_API_KEY` for the UCloud endpoint; these are
 different credentials. Never upload the AITTA token to UCloud or paste it into
 CLI arguments. No duplicate token file is created.
+
+Run commands from the model-agent checkout to use its existing .env and local
+artifacts. From another directory, put the explicit file option before the action:
+
+```sh
+cbs-model aitta --env-file /absolute/path/to/existing/.env models
+```
 
 The documented token lifetime is currently 90 days, potentially shorter if the
 project/account ends. Token renewal is the operator's responsibility. The service

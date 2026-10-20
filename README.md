@@ -23,14 +23,20 @@ fallback, bulk loading, job allocation or renewal runs automatically.
 
 Start with [researcher onboarding and harness integration](docs/researcher-onboarding.md)
 for installation, provider workspace requirements and the command/result contract.
+For a colleague's first deployment, use the [onboarding pilot plan](docs/onboarding-plan.md)
+and its phase-by-phase acceptance checklist. The documented release pair is wrapper
+v0.1.3 with provider v0.1.5; ucloud-api is pinned at v0.1.7 by the provider.
 
 ```powershell
-python -m pip install -e ".[providers]"
+python -m pip install ".[ucloud-vllm]"
 cbs-model providers
 ```
 
-Private Git dependencies require GitHub access. Install `.[ucloud-vllm]` or `.[aitta]`
-instead if you only use one provider. The pins are UCloud agent v0.1.5 and LUMI
+Run this from a checkout of the documented wrapper release in an activated venv.
+Private Git dependencies require command-line GitHub access, including ucloud-api
+for UCloud hosting. Install `.[aitta]` for AITTA or `.[providers]` for both;
+the latter also requires access to the private lumi-aitta-api repository.
+The pins are UCloud agent v0.1.5 and LUMI
 API v0.1.0. `providers` is offline and works without optional dependencies.
 
 ## UCloud vLLM
@@ -41,7 +47,7 @@ journals and cache settings remain in their established locations:
 ```powershell
 cbs-model ucloud-vllm --workspace "..\ucloud-vllm-agent" models
 cbs-model ucloud-vllm --workspace "..\ucloud-vllm-agent" size --profile config/hosting.qwen-small.json
-cbs-model ucloud-vllm --workspace "..\ucloud-vllm-agent" status --deployment deployments/name/run-id
+cbs-model ucloud-vllm --workspace "..\ucloud-vllm-agent" status --deployment deployments/NAME/RUN
 ```
 
 Arguments are delegated directly to the provider CLI in that workspace. Deployment
@@ -55,11 +61,11 @@ variables still override that workspace's .env. Success output is JSON, deployme
 progress is on stderr, and errors include a structured JSON record.
 
 Provider v0.1.5 consumes released ucloud-api v0.1.7. Optional first-time
-[Link/public-key setup](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/v0.1.5/docs/resource-setup.md)
+[Link/public-key setup](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/docs/resource-setup.md)
 has separate preview/apply/reconcile/cleanup commands and creates no jobs. It
 preserves created/reused ownership and blocks uncertain outcomes. `catalog --live`
 adds queue evidence without changing model sizing or automatically selecting a
-machine. Separate [bootstrap](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/v0.1.5/docs/bootstrap.md)
+machine. Separate [bootstrap](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/docs/bootstrap.md)
 prepares a fresh persistent folder and packaged uploads through a bounded CPU job,
 without prior job IDs. Explicit credential provisioning uses SSH stdin and never
 uploads the local .env. Finish emits bootstrap.json; actual model deployment uses
@@ -71,6 +77,8 @@ colleague-led acceptance remains pending. The wrapper adds no second control pat
 
 Use a local `AITTA_API_KEY`, or reference an existing local environment file with
 `aitta --env-file`. No credentials are copied, moved or uploaded.
+Run AITTA commands from this checkout so its default .env and artifacts resolve
+there, or pass an explicit environment-file path before the action.
 
 ```powershell
 cbs-model aitta models
