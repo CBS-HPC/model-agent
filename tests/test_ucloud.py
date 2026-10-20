@@ -84,7 +84,7 @@ def test_two_workspaces_keep_settings_in_separate_real_children(tmp_path, monkey
 def test_offline_providers_need_no_credentials(capsys):
     assert main(["providers"]) == 0
     output = capsys.readouterr().out
-    assert "ucloud-vllm-agent@v0.1.3" in output
+    assert "ucloud-vllm-agent@v0.1.4" in output
     assert "lumi-aitta-api@v0.1.0" in output
     import json
     providers = json.loads(output)

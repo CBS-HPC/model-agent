@@ -24,7 +24,8 @@ also not a settings-isolated embedding API.
 UCloud success stdout contains one provider-specific JSON value. Errors carry
 a schema and error code on stderr; progress may precede the final JSON error
 line. Help/version remain text. Exit 0 means that command succeeded, 1 is an
-operation/requirements/check failure, and 2 is an argument/review/dependency gate.
+operation/requirements/check failure, and 2 is an argument/review/dependency gate
+or uncertain resource outcome requiring reconciliation.
 The wrapper propagates the provider's exit code unchanged. A timeout is not
 cancellation or proof that a job was not created; use the provider journal.
 
@@ -32,6 +33,25 @@ Planning does not authorize allocation. Read the selected provider's contract
 before calling a mutating action. Keep one authoritative set of provider journals,
 and do not silently switch providers or substitute a model. API credentials and
 task/data-use approval are separate decisions.
+
+## Optional first-time UCloud resources
+
+The pinned provider v0.1.4 uses released ucloud-api v0.1.7. Follow its
+[Link/public-key setup guide](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/v0.1.4/docs/resource-setup.md)
+to prepare a researcher-owned request, then delegate its preview commands:
+
+```sh
+cbs-model ucloud-vllm --workspace /absolute/path/ucloud-vllm-agent setup-plan --request config/local.setup.json --output artifacts/setup-plan.json
+cbs-model ucloud-vllm --workspace /absolute/path/ucloud-vllm-agent setup-apply --plan artifacts/setup-plan.json --state run/setup/first
+```
+
+Only add `--yes` after the operator requests those exact resource changes. Setup
+starts no CPU/GPU jobs, creates no secrets and writes no .env. SSH registration is
+optional and account-scoped. Preserve the provider's receipt/ownership directory;
+reconcile uncertain results instead of retrying. Cleanup protects reused resources
+and is independent of job release. Shared storage/uploads and template setup remain
+separate; no-prior-job bootstrap is pending. `catalog --live` offers a read-only
+queue snapshot, not a reservation or automatic model/machine selection.
 
 UCloud AI is reserved as a future managed provider: it will have its own access,
 credential, model catalog and verification requirements. Do not ask its eventual

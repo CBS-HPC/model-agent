@@ -30,7 +30,7 @@ cbs-model providers
 ```
 
 Private Git dependencies require GitHub access. Install `.[ucloud-vllm]` or `.[aitta]`
-instead if you only use one provider. The pins are UCloud agent v0.1.3 and LUMI
+instead if you only use one provider. The pins are UCloud agent v0.1.4 and LUMI
 API v0.1.0. `providers` is offline and works without optional dependencies.
 
 ## UCloud vLLM
@@ -53,6 +53,14 @@ Delegation uses a separate child process per invocation. Provider-loaded setting
 cannot leak into subsequent workspace calls; explicit inherited environment
 variables still override that workspace's .env. Success output is JSON, deployment
 progress is on stderr, and errors include a structured JSON record.
+
+Provider v0.1.4 consumes released ucloud-api v0.1.7. Optional first-time
+[Link/public-key setup](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/v0.1.4/docs/resource-setup.md)
+has separate preview/apply/reconcile/cleanup commands and creates no jobs. It
+preserves created/reused ownership and blocks uncertain outcomes. `catalog --live`
+adds queue evidence without changing model sizing or automatically selecting a
+machine. Shared-folder/template setup and bootstrap without prior job IDs remain
+separate; deployment still requires both explicit template IDs.
 
 ## LUMI AITTA
 

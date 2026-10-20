@@ -12,9 +12,11 @@ Publication note: historical operational identifiers use role labels and example
 - [x] Isolate UCloud delegation in a child process per invocation and regression
   test two workspaces. Repeated direct provider-main embedding remains unsupported.
 - [x] Pin the released UCloud vLLM provider v0.1.3 for the onboarding changes.
-- [ ] Later document optional resource setup through released ucloud-api Link management. SSH public-key
-  management is conditional on upstream delivery. Keep implementation in the
-  provider/API; the wrapper must not duplicate resource control or journals.
+- [x] Document optional Link/account-public-key setup through released ucloud-api
+  v0.1.7 and published provider v0.1.4. Keep resource control and ownership/recovery
+  journals in the provider/API; the wrapper delegates without duplicating them.
+- [x] Update optional dependencies and offline capabilities to published provider
+  v0.1.4, including separate setup and opt-in live availability snapshots.
 - [ ] Validate clean installation and a first deployment using another
   researcher's project. Local/mock validation and release publication are separate
   from this outstanding live acceptance test.
@@ -24,7 +26,14 @@ Publication note: historical operational identifiers use role labels and example
 - [ ] Keep the future UCloud AI onboarding separate: review its own access,
   authentication and model/task contract rather than requiring self-hosting setup.
 
-Continuation checkpoint 2026-10-19: local harness changes and provider pin are
+Continuation checkpoint 2026-10-20: provider v0.1.4 is published at v0.1.4 with
+128 passing local tests (one platform skip), passing Windows/Linux CI and reviewed
+ucloud-api v0.1.7. Wrapper v0.1.2 consumes that published provider and documents
+separate Link/key setup. Publish after wrapper tests/build/CI; inspect GitHub before
+repeating work. No cloud jobs/resources were created. Shared storage/bootstrap,
+new setup-adapter live validation and colleague-led onboarding remain pending.
+
+Previous checkpoint 2026-10-19: local harness changes and provider pin are
 published in wrapper v0.1.1 (v0.1.1), consuming provider v0.1.3 (v0.1.3).
 Both CI matrices passed; 17 wrapper tests pass locally. No cloud jobs/resources were created. Link/key
 provisioning, no-prior-job bootstrap and colleague-led live onboarding remain

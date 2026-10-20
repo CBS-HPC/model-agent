@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cbs-model-agent"
-version = "0.1.1"
+version = "0.1.2"
 description = "Provider selection and inference workflows for CBS open-weight models"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -12,10 +12,10 @@ dependencies = []
 
 [project.optional-dependencies]
 aitta = ["lumi-aitta-api @ git+https://github.com/CBS-HPC/lumi-aitta-api.git@v0.1.0"]
-ucloud-vllm = ["ucloud-vllm-agent[ucloud] @ git+https://github.com/CBS-HPC/ucloud-vllm-agent.git@v0.1.3"]
+ucloud-vllm = ["ucloud-vllm-agent[ucloud] @ git+https://github.com/CBS-HPC/ucloud-vllm-agent.git@v0.1.4"]
 providers = [
   "lumi-aitta-api @ git+https://github.com/CBS-HPC/lumi-aitta-api.git@v0.1.0",
-  "ucloud-vllm-agent[ucloud] @ git+https://github.com/CBS-HPC/ucloud-vllm-agent.git@v0.1.3",
+  "ucloud-vllm-agent[ucloud] @ git+https://github.com/CBS-HPC/ucloud-vllm-agent.git@v0.1.4",
 ]
 dev = ["pytest>=8", "build>=1"]
 

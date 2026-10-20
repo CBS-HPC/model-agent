@@ -28,6 +28,14 @@ intent for those operations. Never bulk preload, automatically switch providers,
 retry unknown submissions, stop shared workers or renew after an operator stops.
 Preload accepted is not readiness. Never stop a successfully hosted job on exit.
 
+UCloud resource setup is a separate provider workflow (docs/resource-setup.md in
+its workspace): setup-plan is read-only; setup-apply/cleanup preview unless --yes
+is supplied. Require explicit intent to reserve a Link or register/remove the exact
+account public key. Setup creates no jobs and is not deployment readiness. Preserve
+created/reused ownership and upstream receipts; uncertain outcomes block retries.
+Never use new state to bypass them, clean up reused resources or reimplement this
+control in the wrapper. Both template IDs remain mandatory for deployment.
+
 Never print secrets or raw authenticated responses. Do not read .env into model
 context, copy it between workspaces, rewrite it, upload tokens or put keys in CLI
 arguments. Code may load an existing environment file. AITTA_API_KEY and

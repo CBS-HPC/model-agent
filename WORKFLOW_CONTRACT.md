@@ -17,6 +17,14 @@ The CLI exposes explicit namespaces rather than pretending both providers share
 job controls. UCloud owns lifecycle/journals and precise job identity. AITTA owns
 workers and Slurm. No transparent fallback, duplicate allocation or model substitution.
 
+UCloud Link/optional account-key setup delegates to the provider's separate
+setup-plan/apply/status/reconcile/cleanup commands. Plan is read-only; apply/cleanup
+preview until --yes, and resource writes need explicit target-specific intent.
+These commands create no jobs and do not establish deployment readiness. Retain
+provider-owned intent/receipts and created/reused ownership; unknown outcomes block
+retries. No setup logic or second journal belongs in the wrapper. Both template
+IDs remain required; application-spec bootstrap is not yet supported.
+
 UCloud delegation requires a project workspace named ucloud-vllm-agent in its
 pyproject.toml. Arguments retain their meaning; paths resolve there. No wrapper
 credentials or settings are loaded first. Each invocation uses a child process
