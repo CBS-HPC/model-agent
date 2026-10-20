@@ -107,3 +107,9 @@ python -m build
 
 See [architecture](docs/architecture.md), [execution contract](WORKFLOW_CONTRACT.md)
 and [remaining work](TODO.md). No live jobs are started by the test suite.
+
+## License
+
+Code, configuration/runtime templates and code examples use MIT. Documentation
+uses CC BY 4.0. See [license scope and attribution](LICENSE.md) and the full texts
+in [LICENSES/](LICENSES/).
