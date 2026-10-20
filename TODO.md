@@ -2,6 +2,19 @@
 
 Publication note: historical operational identifiers use role labels and example URLs; measurements and runtime behavior are retained. Exact identities belong in private journals.
 
+## Isolated bootstrap follow-up (2026-10-20)
+
+Provider implementation/testing is in sibling ucloud-vllm-agent on branch
+bootstrap-onboarding inside onboarding-sandbox-20261020. Its new bootstrap mode
+creates fresh namespaced folders/uploads through a bounded CPU job, without prior
+job IDs. The wrapper still pins published v0.1.4: do not change this dependency or
+advertise bootstrap as a released wrapper capability until the reviewed provider
+release is published. Then update metadata, docs, pin and tests together.
+Live target is operator-selected "isolated validation project" with new local sandbox
+credentials. Original checkouts/deployed folders remain untouched. See the sibling
+provider TODO.md/SPEC.md and docs/bootstrap.md for the exact checkpoint. Colleague-
+led acceptance remains distinct from this operator-led sandbox trial.
+
 ## Researcher onboarding priority
 
 - [x] Follow the local/harness stage of the [UCloud vLLM onboarding roadmap](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/main/TODO.md#researcher-onboarding-roadmap):
