@@ -4,16 +4,19 @@ Publication note: historical operational identifiers use role labels and example
 
 ## Isolated bootstrap follow-up (2026-10-20)
 
-Provider implementation/testing is in sibling ucloud-vllm-agent on branch
-bootstrap-onboarding inside onboarding-sandbox-20261020. Its new bootstrap mode
-creates fresh namespaced folders/uploads through a bounded CPU job, without prior
-job IDs. The wrapper still pins published v0.1.4: do not change this dependency or
-advertise bootstrap as a released wrapper capability until the reviewed provider
-release is published. Then update metadata, docs, pin and tests together.
-Live target is operator-selected "isolated validation project" with new local sandbox
-credentials. Original checkouts/deployed folders remain untouched. See the sibling
-provider TODO.md/SPEC.md and docs/bootstrap.md for the exact checkpoint. Colleague-
-led acceptance remains distinct from this operator-led sandbox trial.
+Provider v0.1.5 is published at v0.1.5 after Windows/Linux CI, source/wheel asset
+checks and an isolated live Qwen bootstrap trial without prior job IDs. This
+wrapper change pins that published release, adds bootstrap metadata/docs and keeps
+generic control/journals in the provider. Remaining: wrapper v0.1.3 CI/publication
+and fresh installation of the actual released chain. Do not republish the provider.
+
+The trial used operator-selected "isolated validation project", fresh namespaced storage
+and Link, and new local sandbox credentials. Both CPU jobs were released. Serving
+job bootstrap-qwen-gpu has recorded expiry 2026-10-20 14:04:09 Copenhagen; query status before
+claiming uptime. Never renew/replace/release implicitly. Original checkouts and
+deployed folder remain untouched. See sibling docs/bootstrap-live-validation.md
+for exact scope, recovery and limits. Colleague-led acceptance and new-workspace
+PII remain distinct from this operator-led trial.
 
 ## Researcher onboarding priority
 

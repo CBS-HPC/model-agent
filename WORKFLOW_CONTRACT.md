@@ -22,8 +22,14 @@ setup-plan/apply/status/reconcile/cleanup commands. Plan is read-only; apply/cle
 preview until --yes, and resource writes need explicit target-specific intent.
 These commands create no jobs and do not establish deployment readiness. Retain
 provider-owned intent/receipts and created/reused ownership; unknown outcomes block
-retries. No setup logic or second journal belongs in the wrapper. Both template
-IDs remain required; application-spec bootstrap is not yet supported.
+retries. No setup logic or second journal belongs in the wrapper. Template mode
+requires both explicit IDs. The separate bootstrap workflow selects reviewed
+applications, a fresh persistent namespace and a bounded CPU upload job without
+prior IDs. Credentials are an explicit exclusive stdin-only write; finish releases
+the owned CPU and emits an inert bootstrap.json. Pass --bootstrap explicitly to
+doctor/preview/deploy; lifecycle uses the stored source thereafter. GPU deployment
+is separate. Never allocate a dummy GPU to obtain a template or adopt an uncertain
+folder merely because it exists. All controls/journals stay with the provider.
 
 UCloud delegation requires a project workspace named ucloud-vllm-agent in its
 pyproject.toml. Arguments retain their meaning; paths resolve there. No wrapper

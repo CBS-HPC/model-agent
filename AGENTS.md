@@ -34,7 +34,12 @@ is supplied. Require explicit intent to reserve a Link or register/remove the ex
 account public key. Setup creates no jobs and is not deployment readiness. Preserve
 created/reused ownership and upstream receipts; uncertain outcomes block retries.
 Never use new state to bypass them, clean up reused resources or reimplement this
-control in the wrapper. Both template IDs remain mandatory for deployment.
+control in the wrapper. Select either both explicit template IDs or the provider's
+finalized bootstrap.json. Read its docs/bootstrap.md before no-prior-job setup.
+Bootstrap apply can allocate a bounded CPU job; credential provisioning is a
+separate exclusive stdin-only action. GPU deployment remains explicit. Preserve
+source snapshots across recovery/replacement/renewal/rollback; never create a
+dummy GPU template job or infer folder creation ownership from existence.
 
 Never print secrets or raw authenticated responses. Do not read .env into model
 context, copy it between workspaces, rewrite it, upload tokens or put keys in CLI

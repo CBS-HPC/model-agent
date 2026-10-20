@@ -30,7 +30,7 @@ cbs-model providers
 ```
 
 Private Git dependencies require GitHub access. Install `.[ucloud-vllm]` or `.[aitta]`
-instead if you only use one provider. The pins are UCloud agent v0.1.4 and LUMI
+instead if you only use one provider. The pins are UCloud agent v0.1.5 and LUMI
 API v0.1.0. `providers` is offline and works without optional dependencies.
 
 ## UCloud vLLM
@@ -54,13 +54,18 @@ cannot leak into subsequent workspace calls; explicit inherited environment
 variables still override that workspace's .env. Success output is JSON, deployment
 progress is on stderr, and errors include a structured JSON record.
 
-Provider v0.1.4 consumes released ucloud-api v0.1.7. Optional first-time
-[Link/public-key setup](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/v0.1.4/docs/resource-setup.md)
+Provider v0.1.5 consumes released ucloud-api v0.1.7. Optional first-time
+[Link/public-key setup](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/v0.1.5/docs/resource-setup.md)
 has separate preview/apply/reconcile/cleanup commands and creates no jobs. It
 preserves created/reused ownership and blocks uncertain outcomes. `catalog --live`
 adds queue evidence without changing model sizing or automatically selecting a
-machine. Shared-folder/template setup and bootstrap without prior job IDs remain
-separate; deployment still requires both explicit template IDs.
+machine. Separate [bootstrap](https://github.com/CBS-HPC/ucloud-vllm-agent/blob/v0.1.5/docs/bootstrap.md)
+prepares a fresh persistent folder and packaged uploads through a bounded CPU job,
+without prior job IDs. Explicit credential provisioning uses SSH stdin and never
+uploads the local .env. Finish emits bootstrap.json; actual model deployment uses
+that source explicitly instead of template IDs. The isolated Qwen trial passed
+actual-image nginx and loopback/nginx/public chat/auth/SSE checks; independent
+colleague-led acceptance remains pending. The wrapper adds no second control path.
 
 ## LUMI AITTA
 
