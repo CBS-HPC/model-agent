@@ -6,9 +6,13 @@ Publication note: historical operational identifiers use role labels and example
 
 Provider v0.1.5 is published at v0.1.5 after Windows/Linux CI, source/wheel asset
 checks and an isolated live Qwen bootstrap trial without prior job IDs. This
-wrapper change pins that published release, adds bootstrap metadata/docs and keeps
-generic control/journals in the provider. Remaining: wrapper v0.1.3 CI/publication
-and fresh installation of the actual released chain. Do not republish the provider.
+wrapper pins that published release, adds bootstrap metadata/docs and keeps
+generic control/journals in the provider. Wrapper v0.1.3 is published at v0.1.3
+with wheel/source/checksums, 17 passing local tests and passing Windows/Linux
+Python 3.11/3.13 CI. A fresh non-editable install of the actual 0.1.3/0.1.5/0.1.7
+releases passed version/origin checks, wrapper delegation, local bootstrap doctor,
+read-only preview, existing live-job/process status and pip check. It allocated
+no jobs. Do not repeat publication or completed checks; inspect release state.
 
 The trial used operator-selected "isolated validation project", fresh namespaced storage
 and Link, and new local sandbox credentials. Both CPU jobs were released. Serving
