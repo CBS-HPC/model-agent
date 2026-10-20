@@ -29,8 +29,11 @@ Publication note: historical operational identifiers use role labels and example
 Continuation checkpoint 2026-10-20: provider v0.1.4 is published at v0.1.4 with
 128 passing local tests (one platform skip), passing Windows/Linux CI and reviewed
 ucloud-api v0.1.7. Wrapper v0.1.2 consumes that published provider and documents
-separate Link/key setup. Publish after wrapper tests/build/CI; inspect GitHub before
-repeating work. No cloud jobs/resources were created. Shared storage/bootstrap,
+separate Link/key setup. Wrapper v0.1.2 (v0.1.2) is published with wheel/source/
+checksums, 17 passing local tests and passing Windows/Linux CI on Python 3.11/3.13.
+Fresh installed release-chain checks passed delegation, doctor, assets and mocked
+read-only setup. Do not repeat completed checks/publication; inspect GitHub first.
+No cloud jobs/resources were created. Shared storage/bootstrap,
 new setup-adapter live validation and colleague-led onboarding remain pending.
 
 Previous checkpoint 2026-10-19: local harness changes and provider pin are
